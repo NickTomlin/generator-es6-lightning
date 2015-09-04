@@ -28,13 +28,14 @@ module.exports = yeoman.generators.Base.extend({
         {appname: this.appname}
       );
       this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
-      this.fs.copy(
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
       );
+
+      this.fs.copy(
+        this.templatePath('index.js'),
+        this.destinationPath('src/index.js')
+      )
       this.fs.copy(
         this.templatePath('eslintrc'),
         this.destinationPath('.eslintrc')
