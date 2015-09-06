@@ -7,7 +7,7 @@ module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
     // todo: actual prompts
-    console.log(yosay('Hello, and welcome to the ' + chalk.blue('es6-lightning')+ ' generator'));
+    console.log(yosay('⚡⚡ Hello, and welcome to the ' + chalk.blue('es6-lightning')+ ' generator⚡⚡'));
     this.prompt({
       type    : 'input',
       name    : 'name',
@@ -27,9 +27,22 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('package.json'),
         {appname: this.appname}
       );
+
+      this.fs.copyTpl(
+        this.templatePath('_README.md'),
+        this.destinationPath('README.md'),
+        {appname: this.appname}
+      );
+
       this.fs.copy(
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
+      );
+
+      this.fs.copy(
+        this.templatePath('travis.yml'),
+        this.destinationPath('.travis.yml'),
+        {appname: this.appname}
       );
 
       this.fs.copy(
